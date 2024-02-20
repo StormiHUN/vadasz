@@ -19,6 +19,7 @@ public class HelloController {
     int shots_hit = 0;
     int foxes_dead = 0;
     int foxes_alive = 0;
+    int foxes_at_start = 0;
 
     public void initialize(){
 
@@ -26,6 +27,11 @@ public class HelloController {
             for(int x = 0; x < 32; x++){
                 t[y][x] = new ImageView();
                 tn[y][x] = "tree.png";
+                if(Math.random()<=0.1){
+                    tn[y][x] = "fox.png";
+                    foxes_alive++;
+                    foxes_at_start++;
+                }
                 t[y][x].setImage(new Image(getClass().getResourceAsStream("icons/dark.png")));
                 t[y][x].setTranslateX(10+x*48);
                 t[y][x].setTranslateY(10+y*48);
@@ -38,6 +44,7 @@ public class HelloController {
             }
         }
 
+        foxes.setText(String.format("%d/%d róka",foxes_alive,foxes_at_start));
 
     }
 
