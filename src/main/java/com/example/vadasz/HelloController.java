@@ -25,7 +25,7 @@ public class HelloController {
         for(int y = 0;y < 16; y++){
             for(int x = 0; x < 32; x++){
                 t[y][x] = new ImageView();
-                tn[y][x] = "dark.png";
+                tn[y][x] = "tree.png";
                 t[y][x].setImage(new Image(getClass().getResourceAsStream("icons/dark.png")));
                 t[y][x].setTranslateX(10+x*48);
                 t[y][x].setTranslateY(10+y*48);
@@ -44,29 +44,32 @@ public class HelloController {
     public void reveal(int y, int x, String type){
         if(!type.equals("hide")){
             for(int dy = -1; dy < 2; dy++){
-                for(int dx = -1; dx < 2; dx++){
+                for(int dx = -2; dx < 3; dx++){
                     try {
                         t[y + dy][x + dx].setImage(new Image(getClass().getResourceAsStream("icons/" + tn[y + dy][x + dx])));
                     }catch(Exception e){}
                 }
             }
-            for(int dx = -2; dx < 5; dx+=4){
-                try {
-                    t[y][x + dx].setImage(new Image(getClass().getResourceAsStream("icons/" + t[y][x + dx])));
-                }catch (Exception e){}
+            for(int dy = -2; dy < 5; dy+=4){
+                for(int dx = -1; dx < 2; dx++){
+                    try{
+                        t[y + dy][x + dx].setImage(new Image(getClass().getResourceAsStream("icons/" + tn[y + dy][x + dx])));
+                    }catch (Exception e){}
+                }
             }
         }else{
             for(int dy = -1; dy < 2; dy++){
-                for(int dx = -1; dx < 2; dx++){
+                for(int dx = -2; dx < 3; dx++){
                     try {
                         t[y + dy][x + dx].setImage(new Image(getClass().getResourceAsStream("icons/dark.png")));
                     }catch(Exception e){}
                 }
             }
-            for(int dx = -2; dx < 5; dx+=4){
-                try {
-                    t[y][x + dx].setImage(new Image(getClass().getResourceAsStream("icons/dark.png")));
+            for(int dy = -2; dy < 5; dy+=4){for(int dx = -1; dx < 2; dx++){
+                try{
+                    t[y + dy][x + dx].setImage(new Image(getClass().getResourceAsStream("icons/dark.png")));
                 }catch (Exception e){}
+            }
             }
         }
     }
