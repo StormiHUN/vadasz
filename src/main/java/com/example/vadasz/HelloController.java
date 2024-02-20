@@ -38,7 +38,7 @@ public class HelloController {
                 int finalY = y;
                 int finalX = x;
                 t[y][x].setOnMouseEntered(mouseEvent -> reveal(finalY,finalX,"reveal"));
-                t[y][x].setOnMouseExited(mouseEvent -> reveal(finalY,finalX,"hide"));
+                t[y][x].setOnMouseExited(mouseEvent -> reveal(finalY,finalX,"hide "));
 
                 pane.getChildren().add(t[y][x]);
             }
@@ -49,7 +49,7 @@ public class HelloController {
     }
 
     public void reveal(int y, int x, String type){
-        if(!type.equals("hide")){
+        if(!type.equals("hide ")){
             for(int dy = -1; dy < 2; dy++){
                 for(int dx = -2; dx < 3; dx++){
                     try {
